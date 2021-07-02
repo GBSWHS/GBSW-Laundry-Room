@@ -1,0 +1,11 @@
+table, tr, th, td {
+    border: solid black;
+    border-collapse:collapse;
+    padding: 5px 15px;
+}
+
+#DB_TABLE {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}

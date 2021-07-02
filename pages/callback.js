@@ -6,7 +6,7 @@ import fetcher from '../utils/fetcher';
 
 export default function Callback () {
   const router = useRouter()
-  const url = new URL(router.asPath, '<url>')
+  const url = new URL(router.asPath, 'http://url.com')
   const code = url.searchParams.get('code')
 
   const { data, error } = useSWR('/api/login?code=' + code, fetcher);

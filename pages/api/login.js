@@ -5,16 +5,16 @@ import dotenv from 'dotenv'
 dotenv.config();
 
 const DBConfig = {
-    host: '127.0.0.1',
+    host:'host', // mysql이 돌아가는 서버 아이피
     port: 3306,
-    user: 'user',
+    user: 'user', 
     database : 'database'
 }
-
 const db = knex({
     client: 'mysql',
     connection: DBConfig
 })
+
 
 export default async function HGK_API (req, res) {
     const code = req.query.code
@@ -33,6 +33,7 @@ export default async function HGK_API (req, res) {
     }).then((res) => res.json())
 
     if (!data.success) return res.send({ success: false, message: data.message })
-    if (data.user.room_number < 300 || data.user.room_number > 309) return res.send({ success: false, message: "안이 너 3층 아니잖아" })
-    return res.send({ success: true, token: jwt.sign({ username: data.user.id, realname: data.user.name, room: data.user.room_number }, process.env.SECRETHASH, { expiresIn: '4h' }) })
+
+
+    return res.send({ success: true, token: jwt.sign({ username: data.user.id, realname: data.user.name, room: data.user.room_number }, process.env.SECRETHASH, { expiresIn: '8h' }) })
 }
