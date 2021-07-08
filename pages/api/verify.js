@@ -6,15 +6,15 @@ dotenv.config();
 
 const DBConfig = {
     host:'host', // mysql이 돌아가는 서버 아이피
-    port: 3306,
-    user: 'user', 
-    database : 'database'
+    port: 3306, // 방화벽에서 3306포트를 열어줘야한다
+    user: 'user', // CREATE USER cth@'%' // '%'는 any를 뜻한다.
+    database : 'database' //HGK_db라는 database 이름
 }
+
 const db = knex({
     client: 'mysql',
     connection: DBConfig
 })
-
 
 export default async function HGK_API (req, res) {
     const { token } = req.cookies
@@ -97,6 +97,18 @@ export default async function HGK_API (req, res) {
                 Laundry10name: Laundry[9].realname,
                 Laundry11name: Laundry[10].realname,
                 Laundry12name: Laundry[11].realname,
+                Laundry1Time: Laundry[0].start,
+                Laundry2Time: Laundry[1].start,
+                Laundry3Time: Laundry[2].start,
+                Laundry4Time: Laundry[3].start,
+                Laundry5Time: Laundry[4].start,
+                Laundry6Time: Laundry[5].start,
+                Laundry7Time: Laundry[6].start,
+                Laundry8Time: Laundry[7].start,
+                Laundry9Time: Laundry[8].start,
+                Laundry10Time: Laundry[9].start,
+                Laundry11Time: Laundry[10].start,
+                Laundry12Time: Laundry[11].start,
                 L1use,
                 L2use,
                 L3use,
