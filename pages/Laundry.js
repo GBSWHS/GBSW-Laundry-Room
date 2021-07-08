@@ -51,9 +51,8 @@ export default function Home() {
       let m = [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]
       for (let i = 0; i < 12; i++){
         if (StartDate[i] == 0) continue
-	      StartDate[i] = parseInt(Math.round(StartDate[i]))
+	StartDate[i] = parseInt(Math.round(StartDate[i]))
         StartDate[i] = Date.now()/1000 - StartDate[i]
-	      console.log(StartDate[i], h[i], m[i])
         h[i] = Math.round(StartDate[i] / 3600)
         m[i] = Math.round((StartDate[i] % 3600) / 60)
       }
